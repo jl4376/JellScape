@@ -17,6 +17,12 @@ public class PauseMenu : MonoBehaviour
 
     private bool isPaused = false;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -76,8 +82,19 @@ public class PauseMenu : MonoBehaviour
             GameManager.Instance = null;
         }
 
+        // ✅ Destroy this PauseMenu GameObject (since it’s DontDestroyOnLoad)
+        Destroy(gameObject);
+
+        // ✅ Optionally destroy persistent EventSystem if you have one
+        var eventSystem = GameObject.Find("EventSystem");
+        if (eventSystem != null && eventSystem.scene.name == "DontDestroyOnLoad")
+        {
+            Destroy(eventSystem);
+        }
+
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
 
     public void GoToConfirmMenu()
     {

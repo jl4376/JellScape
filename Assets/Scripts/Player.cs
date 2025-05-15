@@ -11,6 +11,11 @@ public abstract class Player : MonoBehaviour
     [SerializeField]protected float friction;
     protected Vector2 moveDirection;
 
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     void Start() 
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
