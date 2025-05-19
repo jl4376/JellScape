@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/wave1.unity
     guid: 73fb33426a1f04134aae5b33cfa68b6e
+  - enabled: 1
+    path: Assets/Scenes/ZachScene.unity
+    guid: d6b75b525c30f434896f3787768925e6
+  - enabled: 1
+    path: Assets/Scenes/PlayerScene.unity
+    guid: d6269972d0491427c8545f8bbfc466ce
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
 
     public void LoadGame() {
-        SceneManager.LoadScene("AileyScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
 
         // Delay StartGame() to ensure the scene is ready
         Invoke(nameof(StartWavesAfterDelay), 0.3f);
