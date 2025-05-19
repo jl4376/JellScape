@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player1 : Player
 {
-    // public Animator animator;
+    public Animator animator;
     private int defaultHealth;
     public static Player1 Instance;
     private Vector3 initalLocation;
@@ -30,39 +30,45 @@ public class Player1 : Player
     }
 
     protected override void Move() {
-        if (isDashing) {
-            return;
-        }
-        if(moveDirection.magnitude > 0){
-            rigidBody.linearVelocity = moveDirection * moveSpeed;
-       } else {
-            rigidBody.linearVelocity -= rigidBody.linearVelocity * friction;
-       }
+    if (isDashing) {
+        return;
     }
 
-    void Update() {
-        if (isDashing) {
-            return;
-        }
+    if (moveDirection.magnitude > 0) {
+        rigidBody.linearVelocity = moveDirection * moveSpeed;
+    } else {
+        // Slowly reduce velocity and clamp it to zero when small
+        rigidBody.linearVelocity *= (1f - friction);
 
+        if (rigidBody.linearVelocity.magnitude < 0.01f) {
+            rigidBody.linearVelocity = Vector2.zero;
+        }
+    }
+}
+
+    void Update() {
+        moveDirection = Vector2.zero;
+
+        // Collect input
         if (Input.GetKey(KeyCode.W)) {
             moveDirection.y = 1;
         } else if (Input.GetKey(KeyCode.S)) {
             moveDirection.y = -1;
-        } else {
-            moveDirection.y = 0;
         }
+
         if (Input.GetKey(KeyCode.A)) {
             moveDirection.x = -1;
         } else if (Input.GetKey(KeyCode.D)) {
             moveDirection.x = 1;
-        } else {
-            moveDirection.x = 0;
         }
+
+        // Set walking animation based on movement vector
+        animator.SetBool("isWalk", moveDirection != Vector2.zero);
 
         if (Input.GetKeyDown(KeyCode.Tab) && canDash) {
             StartCoroutine(Dash());
         }
+
     }
 
     private IEnumerator Dash() {
