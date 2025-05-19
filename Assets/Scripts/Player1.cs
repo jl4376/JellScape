@@ -63,7 +63,7 @@ public class Player1 : Player
         }
 
         // Set walking animation based on movement vector
-        animator.SetBool("isWalk", moveDirection != Vector2.zero);
+        //animator.SetBool("isWalk", moveDirection != Vector2.zero);
 
         if (Input.GetKeyDown(KeyCode.Tab) && canDash) {
             StartCoroutine(Dash());
