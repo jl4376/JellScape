@@ -63,7 +63,7 @@ public class Player2 : Player
         } else if (Input.GetKey(KeyCode.RightArrow)) {
             moveDirection.x = 1;
         } 
-        animator.SetBool("isWalk", moveDirection != Vector2.zero);
+        //animator.SetBool("isWalk", moveDirection != Vector2.zero);
         if (Input.GetKeyDown(KeyCode.Space) && canDash) {
                 StartCoroutine(Dash());
         }
