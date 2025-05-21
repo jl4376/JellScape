@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 513718897822373700}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,6 @@ MonoBehaviour:
   health: 5
   moveSpeed: 5
   friction: 0.1
-  animator: {fileID: 0}
   dashingPower: 24
   dashingTime: 0.1
   dashingCooldown: 0.3
