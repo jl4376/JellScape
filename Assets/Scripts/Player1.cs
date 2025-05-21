@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player1 : Player
 {
-    public Animator animator;
+    //public Animator animator;
     private int defaultHealth;
     public static Player1 Instance;
     private Vector3 initalLocation;
@@ -85,4 +85,17 @@ public class Player1 : Player
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
+    public void TakeDamage(int amount) {
+        health -= amount;
+       //animator.setBool();
+        if (health <= 0)
+        {
+            Debug.Log("Player has died!");
+            gameObject.SetActive(false); // Or trigger death animation, etc.
+        } else {
+            Debug.Log($"Player has {health} health left");
+        }
+    }
+
 }
