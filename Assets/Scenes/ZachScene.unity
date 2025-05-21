@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228681137e4e0492dbd129160e59adb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 60
   moveSpeed: 5
   friction: 0.1
   animator: {fileID: 210019410}
@@ -990,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  damageInterval: 1
 --- !u!1001 &1874471479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,6 +1001,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3595184382599254896, guid: eba7e472e2cd746cfb96ff7bd58a9717, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644303909516851028, guid: eba7e472e2cd746cfb96ff7bd58a9717, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6000529794061576408, guid: eba7e472e2cd746cfb96ff7bd58a9717, type: 3}
