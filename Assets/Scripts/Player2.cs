@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player2 : Player
 {
-    public Animator animator;
+    //public Animator animator;
     private int defaultHealth;
     public static Player2 Instance;
     private Vector3 initalLocation;
