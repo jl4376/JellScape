@@ -279,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveScenes:
   - wave1
+  - AileyWave
 --- !u!224 &163918147363737765
 RectTransform:
   m_ObjectHideFlags: 0
