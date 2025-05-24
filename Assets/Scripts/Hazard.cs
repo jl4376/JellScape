@@ -6,13 +6,13 @@ public class Hazard : MonoBehaviour
     public int damage = 1;
     public float damageInterval = 1f;
 
-    private Dictionary<Player1, float> nextDamageTime = new Dictionary<Player1, float>();
+    private Dictionary<Player, float> nextDamageTime = new Dictionary<Player, float>();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Player1 player = other.GetComponent<Player1>();
+            Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.TakeDamage(damage);
@@ -25,7 +25,7 @@ public class Hazard : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player1 player = other.GetComponent<Player1>();
+            Player player = other.GetComponent<Player>();
             if (player != null && Time.time >= nextDamageTime.GetValueOrDefault(player, 0))
             {
                 player.TakeDamage(damage);

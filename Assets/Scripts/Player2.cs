@@ -1,110 +1,20 @@
 using UnityEngine;
-using System.Collections;
 
 public class Player2 : Player
 {
-    //public Animator animator;
-    private int defaultHealth;
-    public static Player2 Instance;
-    private Vector3 initalLocation;
-    public static bool isDestroyed = false;
-    // [SerializeField] private GameObject playerPrefab;
-
-    private bool canDash = true;
-    private bool isDashing;
-    public float dashingPower;
-    public float dashingTime;
-    public float dashingCooldown;
-
-    [SerializeField] private TrailRenderer tr;
-
-    void Awake()
+    protected override Vector2 ReadMovementInput()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        var dir = Vector2.zero;
+        if      (Input.GetKey(KeyCode.UpArrow))    dir.y = +1;
+        else if (Input.GetKey(KeyCode.DownArrow))  dir.y = -1;
+        if      (Input.GetKey(KeyCode.LeftArrow))  dir.x = -1;
+        else if (Input.GetKey(KeyCode.RightArrow)) dir.x = +1;
+        return dir;
     }
 
-    protected override void CustomStart()
+    protected override bool ReadDashInput()
     {
-        initalLocation = rigidBody.transform.position;
-        defaultHealth = health;
-    }
-
-    protected override void Move()
-    {
-        if (isDashing)
-        {
-            return;
-        }
-
-        if (moveDirection.magnitude > 0)
-        {
-            rigidBody.linearVelocity = moveDirection * moveSpeed;
-        }
-        else
-        {
-            // Slowly reduce velocity and clamp it to zero when small
-            rigidBody.linearVelocity *= (1f - friction);
-
-            if (rigidBody.linearVelocity.magnitude < 0.01f)
-            {
-                rigidBody.linearVelocity = Vector2.zero;
-            }
-        }
-    }
-
-    void Update()
-    {
-        moveDirection = Vector2.zero;
-        if (isDashing)
-        {
-            return;
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            moveDirection.y = 1;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            moveDirection.y = -1;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            moveDirection.x = -1;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            moveDirection.x = 1;
-        }
-        //animator.SetBool("isWalk", moveDirection != Vector2.zero);
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
-
-
-
-
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-
-        Vector2 dashDir = moveDirection.magnitude > 0 ? moveDirection.normalized : Vector2.right * transform.localScale.x;
-        rigidBody.linearVelocity = dashDir * dashingPower;
-
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+        return Input.GetKeyDown(KeyCode.Space);
     }
     
     public void TakeDamage(int amount) {
