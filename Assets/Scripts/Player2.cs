@@ -18,62 +18,81 @@ public class Player2 : Player
 
     [SerializeField] private TrailRenderer tr;
 
-    void Awake() {
-        if (Instance == null) {
+    void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
         }
     }
 
-    protected override void CustomStart() {
+    protected override void CustomStart()
+    {
         initalLocation = rigidBody.transform.position;
         defaultHealth = health;
     }
 
-    protected override void Move() {
-        if (isDashing) {
+    protected override void Move()
+    {
+        if (isDashing)
+        {
             return;
         }
 
-        if (moveDirection.magnitude > 0) {
+        if (moveDirection.magnitude > 0)
+        {
             rigidBody.linearVelocity = moveDirection * moveSpeed;
-        } else {
+        }
+        else
+        {
             // Slowly reduce velocity and clamp it to zero when small
             rigidBody.linearVelocity *= (1f - friction);
 
-            if (rigidBody.linearVelocity.magnitude < 0.01f) {
+            if (rigidBody.linearVelocity.magnitude < 0.01f)
+            {
                 rigidBody.linearVelocity = Vector2.zero;
             }
         }
     }
 
-    void Update() {
+    void Update()
+    {
         moveDirection = Vector2.zero;
-        if (isDashing) {
+        if (isDashing)
+        {
             return;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
             moveDirection.y = 1;
-        } else if (Input.GetKey(KeyCode.DownArrow)) {
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
             moveDirection.y = -1;
-        } 
-
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            moveDirection.x = -1;
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
-            moveDirection.x = 1;
-        } 
-        //animator.SetBool("isWalk", moveDirection != Vector2.zero);
-        if (Input.GetKeyDown(KeyCode.Space) && canDash) {
-                StartCoroutine(Dash());
         }
 
-        
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveDirection.x = -1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveDirection.x = 1;
+        }
+        //animator.SetBool("isWalk", moveDirection != Vector2.zero);
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
+
 
 
     }
 
-    private IEnumerator Dash() {
+    private IEnumerator Dash()
+    {
         canDash = false;
         isDashing = true;
 
@@ -86,5 +105,17 @@ public class Player2 : Player
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+    
+    public void TakeDamage(int amount) {
+        health -= amount;
+       //animator.setBool();
+        if (health <= 0)
+        {
+            Debug.Log("Player has died!");
+            gameObject.SetActive(false); // Or trigger death animation, etc.
+        } else {
+            Debug.Log($"Player has {health} health left");
+        }
     }
 }
