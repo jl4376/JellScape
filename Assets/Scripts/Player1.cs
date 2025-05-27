@@ -87,6 +87,7 @@ public class Player1 : Player
     }
 
     public void TakeDamage(int amount) {
+        if (isDashing) return;
         health -= amount;
        //animator.setBool();
         if (health <= 0)
