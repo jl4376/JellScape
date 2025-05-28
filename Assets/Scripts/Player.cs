@@ -92,6 +92,8 @@ public abstract class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDashing) return;
+
         health -= amount;
         healthBar.UpdateHealthBar(health, maxHealth);
 
