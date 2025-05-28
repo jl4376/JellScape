@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Hazard : MonoBehaviour
 {
     public int damage = 1;
-    public float damageInterval = 1f;
+    public float damageInterval = 2f;
 
     private Dictionary<Player, float> nextDamageTime = new Dictionary<Player, float>();
 
