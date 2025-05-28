@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5379316130486795461}
   m_Layer: 0
   m_Name: PinkFire
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.32
+  m_Radius: 0.25
 --- !u!50 &514573208958980468
 Rigidbody2D:
   serializedVersion: 5
@@ -188,3 +188,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825a2915627c4434ca7bc31014297ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  damageInterval: 1

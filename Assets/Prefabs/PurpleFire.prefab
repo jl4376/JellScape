@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7119697895053835156}
   m_Layer: 0
   m_Name: PurpleFire
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825a2915627c4434ca7bc31014297ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  damageInterval: 1
 --- !u!50 &7071650685532559634
 Rigidbody2D:
   serializedVersion: 5
@@ -187,4 +189,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.32
+  m_Radius: 0.25
