@@ -34,6 +34,7 @@ public abstract class Player : MonoBehaviour
     {
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
+        GameManager.RegisterPlayer();
         OnStart();                
     }
 
@@ -100,6 +101,7 @@ public abstract class Player : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Player has died!");
+            GameManager.HandlePlayerDeath();
             gameObject.SetActive(false);
         }
     }
