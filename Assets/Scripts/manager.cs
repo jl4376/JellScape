@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("🏁 All waves complete! No more scenes to load.");
             // TODO: Show win screen or return to menu
+            // Pop up a canvas here...
             return;
         }
 
