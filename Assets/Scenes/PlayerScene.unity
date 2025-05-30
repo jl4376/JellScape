@@ -119,33 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &392043752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 478905839990303861, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
-  m_PrefabInstance: {fileID: 4379949727278162043}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &392043753
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392043752}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf4db5108a8b1874692fcde7c19517c8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &729023200
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,10 +348,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 478905839990303861, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 392043753}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
 --- !u!1001 &5629810631016971251
 PrefabInstance:
