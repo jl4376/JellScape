@@ -34,6 +34,7 @@ public abstract class Player : MonoBehaviour
     {
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
+        GameManager.RegisterPlayer();
         OnStart();                
     }
 
@@ -92,12 +93,15 @@ public abstract class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDashing) return;
+
         health -= amount;
         healthBar.UpdateHealthBar(health, maxHealth);
 
         if (health <= 0)
         {
             Debug.Log("Player has died!");
+            GameManager.HandlePlayerDeath();
             gameObject.SetActive(false);
         }
     }
