@@ -17,15 +17,4 @@ public class Player2 : Player
         return Input.GetKeyDown(KeyCode.Space);
     }
     
-    public void TakeDamage(int amount) {
-        health -= amount;
-       //animator.setBool();
-        if (health <= 0)
-        {
-            Debug.Log("Player has died!");
-            gameObject.SetActive(false); // Or trigger death animation, etc.
-        } else {
-            Debug.Log($"Player has {health} health left");
-        }
-    }
 }
