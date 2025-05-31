@@ -16,4 +16,5 @@ public class Player2 : Player
     {
         return Input.GetKeyDown(KeyCode.Space);
     }
+    
 }
