@@ -281,6 +281,7 @@ MonoBehaviour:
   - ZachScene
   - wave1
   - AileyWave
+  sceneToKeep: PlayerScene
 --- !u!224 &163918147363737765
 RectTransform:
   m_ObjectHideFlags: 0
