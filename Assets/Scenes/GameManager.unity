@@ -278,8 +278,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScenes:
-  - wave1
   - AileyWave
+  - ZachScene
+  - wave1
+  sceneToKeep: PlayerScene
 --- !u!224 &163918147363737765
 RectTransform:
   m_ObjectHideFlags: 0

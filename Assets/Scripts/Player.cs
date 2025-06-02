@@ -39,6 +39,7 @@ public abstract class Player : MonoBehaviour
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
         audioSource = gameObject.GetComponent<AudioSource>();
+        GameManager.RegisterPlayer();
         OnStart();                
     }
 
@@ -117,6 +118,7 @@ public abstract class Player : MonoBehaviour
     private IEnumerator DeactivateAfterSound(float delay)
     {
         yield return new WaitForSeconds(delay);
+        GameManager.HandlePlayerDeath();
         gameObject.SetActive(false);
     }
 }

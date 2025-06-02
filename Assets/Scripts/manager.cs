@@ -4,72 +4,89 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public static int playerCount = 0;
 
     [Header("Scene Progression")]
-    public string[] waveScenes; // Assign in Inspector: e.g., ["Wave1", "Wave2"]
+    public string[] waveScenes;
     private int currentWaveIndex = 0;
+
+    [Header("Persistence")]
+    [Tooltip("Name of the scene whose root objects should never be destroyed (e.g., \"PlayerScene\").")]
+    public string sceneToKeep;
 
     private void Awake()
     {
-        Debug.Log("🟢 GameManager Awake");
-
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist through scene loads
-            Debug.Log("✅ GameManager set as Singleton");
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.LogWarning("⚠️ Duplicate GameManager detected — destroying this one.");
             Destroy(gameObject);
+            return;
         }
     }
 
     public void StartGame()
     {
-        Debug.Log("🎮 StartGame() called");
         currentWaveIndex = 0;
         LoadCurrentWave();
     }
 
     public void LoadNextWave()
     {
+        DestroyAllExcept(sceneToKeep);
         currentWaveIndex++;
-        Debug.Log($"➡️ LoadNextWave() called — advancing to index {currentWaveIndex}");
-
         if (currentWaveIndex >= waveScenes.Length)
-        {
-            Debug.Log("🏁 All waves complete! No more scenes to load.");
-            // TODO: Show win screen or return to menu
             return;
-        }
-
         LoadCurrentWave();
     }
 
     private void LoadCurrentWave()
     {
         if (waveScenes == null || waveScenes.Length == 0)
-        {
-            Debug.LogError("❌ waveScenes array is empty! Check the Inspector.");
             return;
-        }
-
         if (currentWaveIndex < 0 || currentWaveIndex >= waveScenes.Length)
-        {
-            Debug.LogError($"❌ Invalid wave index: {currentWaveIndex}");
             return;
-        }
+        string nextSceneName = waveScenes[currentWaveIndex];
+        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
+    }
 
-        string nextScene = waveScenes[currentWaveIndex];
-        Debug.Log($"🔁 Loading wave scene: {nextScene} (Index: {currentWaveIndex})");
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Additive);
+    private void DestroyAllExcept(string keepSceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.name == "DontDestroyOnLoad" || scene.name == keepSceneName)
+                continue;
+
+            GameObject[] roots = scene.GetRootGameObjects();
+            foreach (GameObject go in roots)
+            {
+                if (go == this.gameObject)
+                    continue;
+                Destroy(go);
+            }
+
+            SceneManager.UnloadSceneAsync(scene);
+        }
     }
 
     public void MarkWaveComplete()
     {
-        Debug.Log("✅ MarkWaveComplete() called — wave ended.");
         LoadNextWave();
+    }
+
+    public static void RegisterPlayer()
+    {
+        playerCount++;
+    }
+
+    public static void HandlePlayerDeath()
+    {
+        playerCount--;
+        if (playerCount <= 0)
+            Time.timeScale = 0f;
     }
 }

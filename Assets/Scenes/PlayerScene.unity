@@ -549,6 +549,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6977799334166056749, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6526128576001104241, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
       propertyPath: damageClip
       value: 
@@ -640,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 4084965073833551964, guid: d105afa16fa9d4130a097fe4814fe2e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036086981792025774, guid: d105afa16fa9d4130a097fe4814fe2e4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6747610444136676340, guid: d105afa16fa9d4130a097fe4814fe2e4, type: 3}
       propertyPath: m_SizeDelta.x
