@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        
     }
 
 

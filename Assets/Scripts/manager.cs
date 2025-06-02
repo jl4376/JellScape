@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("Name of the scene whose root objects should never be destroyed (e.g., \"PlayerScene\").")]
     public string sceneToKeep;
 
+    public GameObject gameOverUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -87,6 +89,12 @@ public class GameManager : MonoBehaviour
     {
         playerCount--;
         if (playerCount <= 0)
+        {
             Time.timeScale = 0f;
+            if (Instance != null && Instance.gameOverUI != null)
+            {
+                Instance.gameOverUI.SetActive(true); // Show Game Over UI
+            }
+        }
     }
 }
