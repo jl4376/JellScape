@@ -17,6 +17,10 @@ public abstract class Player : MonoBehaviour
     [SerializeField] protected float dashingCooldown;
     [SerializeField] protected TrailRenderer tr;
 
+    [Header("Audio")]
+    [SerializeField] protected AudioClip dashingClip, damageClip, deathClip;
+    private AudioSource audioSource;
+
     protected Rigidbody2D    rigidBody;
     protected SpriteRenderer spriteRenderer;
     protected int            health;
@@ -34,13 +38,17 @@ public abstract class Player : MonoBehaviour
     {
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
+        audioSource = gameObject.GetComponent<AudioSource>();
         GameManager.RegisterPlayer();
         OnStart();                
     }
 
     void Update()
     {
-        if (isDashing) return;
+        if (isDashing) {
+            audioSource.PlayOneShot(dashingClip);
+            return;
+        }
 
         moveDirection = ReadMovementInput();
         if (ReadDashInput() && canDash)
@@ -97,12 +105,20 @@ public abstract class Player : MonoBehaviour
 
         health -= amount;
         healthBar.UpdateHealthBar(health, maxHealth);
-
         if (health <= 0)
         {
+            audioSource.PlayOneShot(deathClip);
             Debug.Log("Player has died!");
-            GameManager.HandlePlayerDeath();
-            gameObject.SetActive(false);
+            StartCoroutine(DeactivateAfterSound(deathClip.length));
+        } else {
+            audioSource.PlayOneShot(damageClip);
         }
+    }
+
+    private IEnumerator DeactivateAfterSound(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManager.HandlePlayerDeath();
+        gameObject.SetActive(false);
     }
 }
