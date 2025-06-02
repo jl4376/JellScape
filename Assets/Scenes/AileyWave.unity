@@ -1292,7 +1292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timelineDirectors:
   - {fileID: 411129691}
-  - {fileID: 0}
 --- !u!4 &665704705
 Transform:
   m_ObjectHideFlags: 0
