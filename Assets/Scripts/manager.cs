@@ -15,20 +15,21 @@ public class GameManager : MonoBehaviour
     public string sceneToKeep;
 
     public GameObject gameOverUI;
+    public GameObject winUI; 
+
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            Destroy(gameObject); // Prevent duplicates
             return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+
 
     public void StartGame()
     {
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         DestroyAllExcept(sceneToKeep);
         currentWaveIndex++;
-        if (currentWaveIndex >= waveScenes.Length)
+        if (currentWaveIndex >= waveScenes.Length) 
             return;
         LoadCurrentWave();
     }
@@ -93,8 +94,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             if (Instance != null && Instance.gameOverUI != null)
             {
+                // ✅ Unlock and show cursor for UI interaction
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
                 Instance.gameOverUI.SetActive(true); // Show Game Over UI
             }
         }
     }
+
 }
