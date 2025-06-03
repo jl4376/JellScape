@@ -821,7 +821,6 @@ MonoBehaviour:
   - wave1
   sceneToKeep: PlayerScene
   gameOverUI: {fileID: 1333941593}
-  winUI: {fileID: 1528824788}
 --- !u!1 &1024888779
 GameObject:
   m_ObjectHideFlags: 0
