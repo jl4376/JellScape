@@ -840,7 +840,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScenes:
+  - AileyWave
   - ZachScene
+  - wave1
   sceneToKeep: PlayerScene
   gameOverUI: {fileID: 1333941593}
   winUI: {fileID: 1528824788}

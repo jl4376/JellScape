@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 public class gameOverMenu : MonoBehaviour
 {
 
-    private static gameOverMenu instance;
+    // private static gameOverMenu instance;
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Debug.Log("🗑 Duplicate WinMenu found. Destroying it.");
-            Destroy(gameObject);
-            return;
-        }
+        // if (instance != null && instance != this)
+        // {
+        //     Debug.Log("🗑 Duplicate WinMenu found. Destroying it.");
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
-        instance = this;
+        // instance = this;
         gameObject.SetActive(false); // Hide on load
         DontDestroyOnLoad(gameObject); // Persist across scenes
     }

@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 1482877866}
     - target: {fileID: 6526128576001104241, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6526128576001104241, guid: 4c0ae1bdfa91b45eca85fe9146ce8852, type: 3}
       propertyPath: damageClip
@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 1689336486}
     - target: {fileID: 8805114140362498492, guid: d105afa16fa9d4130a097fe4814fe2e4, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8805114140362498492, guid: d105afa16fa9d4130a097fe4814fe2e4, type: 3}
       propertyPath: damageClip
