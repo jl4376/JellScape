@@ -45,6 +45,6 @@ public class WaveController : MonoBehaviour
         }
         GameManager.Instance.MarkWaveComplete();
 
-        GameManager.Instance.Invoke(nameof(GameManager.Instance.MarkWaveComplete), 0.1f);
+        //GameManager.Instance.Invoke(nameof(GameManager.Instance.MarkWaveComplete), 0.1f);
     }
 }

@@ -840,7 +840,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScenes:
-  - AileyWave
   - ZachScene
   - wave1
   sceneToKeep: PlayerScene
