@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("Name of the scene whose root objects should never be destroyed (e.g., \"PlayerScene\").")]
     public string sceneToKeep;
 
+    public GameObject gameOverUI;
+    public GameObject winUI;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -21,12 +25,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (Instance != this)
         {
+            Debug.LogWarning("🟡 Duplicate GameManager detected. Destroying this one.");
             Destroy(gameObject);
-            return;
         }
     }
+
 
     public void StartGame()
     {
@@ -39,7 +44,10 @@ public class GameManager : MonoBehaviour
         DestroyAllExcept(sceneToKeep);
         currentWaveIndex++;
         if (currentWaveIndex >= waveScenes.Length)
+        {
+            HandleGameWin();
             return;
+        }
         LoadCurrentWave();
     }
 
@@ -55,23 +63,25 @@ public class GameManager : MonoBehaviour
 
     private void DestroyAllExcept(string keepSceneName)
     {
+        Scene gameManagerScene = Instance.gameObject.scene;
+
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
-            if (scene.name == "DontDestroyOnLoad" || scene.name == keepSceneName)
+
+            if (scene == gameManagerScene || scene.name == keepSceneName)
                 continue;
 
             GameObject[] roots = scene.GetRootGameObjects();
             foreach (GameObject go in roots)
             {
-                if (go == this.gameObject)
-                    continue;
                 Destroy(go);
             }
 
             SceneManager.UnloadSceneAsync(scene);
         }
     }
+
 
     public void MarkWaveComplete()
     {
@@ -87,6 +97,64 @@ public class GameManager : MonoBehaviour
     {
         playerCount--;
         if (playerCount <= 0)
+        {
             Time.timeScale = 0f;
+
+            if (Instance != null && Instance.gameOverUI != null)
+            {
+                // ✅ Unlock and show cursor for UI interaction
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                Instance.gameOverUI.SetActive(true); // Show Game Over UI
+            }
+
+            // GameObject gameOverMenuObj = GameObject.Find("GameOverMenu"); // Exact name in hierarchy
+            // if (gameOverMenuObj != null)
+            // {
+            //     gameOverMenuObj.GetComponent<gameOverMenu>().showMenu();
+            // }
+        }
     }
+
+    private void HandleGameWin()
+    {
+        Time.timeScale = 0f;
+
+        // Show win screen
+        if (winUI != null)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            winUI.SetActive(true);
+        }
+
+        // GameObject winMenuObj = GameObject.Find("WinMenu"); // Exact name in hierarchy
+        // if (winMenuObj != null)
+        // {
+        //     winMenuObj.GetComponent<dontDestroy>().showMenu();
+        // }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Rebind UI references only if they’re missing
+        if (gameOverUI == null)
+            gameOverUI = GameObject.Find("GameOverMenu");
+
+        if (winUI == null)
+            winUI = GameObject.Find("WinMenu");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
 }
