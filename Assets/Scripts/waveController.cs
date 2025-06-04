@@ -41,7 +41,6 @@ public class WaveController : MonoBehaviour
     {
         if (GameManager.Instance == null)
         {
-            Debug.LogError("❌ GameManager.Instance is null during CompleteWave. Did the scene unload it?");
             return;
         }
         GameManager.Instance.MarkWaveComplete();

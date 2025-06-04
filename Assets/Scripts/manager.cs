@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 Destroy(go);
             }
 
-            //SceneManager.UnloadSceneAsync(scene);
+            SceneManager.UnloadSceneAsync(scene);
         }
     }
 

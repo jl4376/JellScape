@@ -350,6 +350,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1333941598}
+        m_TargetAssemblyTypeName: dontDestroy, Assembly-CSharp
+        m_MethodName: HideMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &204739982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +745,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1528824793}
+        m_TargetAssemblyTypeName: dontDestroy, Assembly-CSharp
+        m_MethodName: HideMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &419661928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,9 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScenes:
-  - AileyWave
   - ZachScene
-  - wave1
   sceneToKeep: PlayerScene
   gameOverUI: {fileID: 1333941593}
   winUI: {fileID: 1528824788}
@@ -970,13 +992,14 @@ GameObject:
   - component: {fileID: 1333941596}
   - component: {fileID: 1333941595}
   - component: {fileID: 1333941594}
+  - component: {fileID: 1333941598}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1333941594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,6 +1084,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1333941598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333941593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97223e8e8f384d908fbefac0f57d186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1528824788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,13 +1108,14 @@ GameObject:
   - component: {fileID: 1528824791}
   - component: {fileID: 1528824790}
   - component: {fileID: 1528824789}
+  - component: {fileID: 1528824793}
   m_Layer: 5
   m_Name: WinMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1528824789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,6 +1200,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1528824793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528824788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97223e8e8f384d908fbefac0f57d186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552918185
 GameObject:
   m_ObjectHideFlags: 0
