@@ -78,6 +78,7 @@ public class PauseMenu : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
+            GameManager.playerCount = 0;
             Destroy(GameManager.Instance.gameObject);
             GameManager.Instance = null;
         }
