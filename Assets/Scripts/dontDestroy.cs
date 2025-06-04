@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class dontDestroy : MonoBehaviour
-{  
+{
     private static dontDestroy instance;
 
     void Awake()
@@ -27,6 +27,12 @@ public class dontDestroy : MonoBehaviour
 
     public void HideMenu()
     {
+        Time.timeScale = 1f;
         gameObject.SetActive(false);
+    }
+
+    public void ShowMenu()
+    {
+        gameObject.SetActive(true);
     }
 }

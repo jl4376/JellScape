@@ -351,7 +351,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1333941598}
-        m_TargetAssemblyTypeName: dontDestroy, Assembly-CSharp
+        m_TargetAssemblyTypeName: gameOverMenu, Assembly-CSharp
         m_MethodName: HideMenu
         m_Mode: 1
         m_Arguments:
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1333941593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d97223e8e8f384d908fbefac0f57d186, type: 3}
+  m_Script: {fileID: 11500000, guid: 05c335f2add7a44198402f5782014790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1528824788

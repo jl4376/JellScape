@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         if (playerCount <= 0)
         {
             Time.timeScale = 0f;
+
             if (Instance != null && Instance.gameOverUI != null)
             {
                 // ✅ Unlock and show cursor for UI interaction
@@ -107,6 +108,12 @@ public class GameManager : MonoBehaviour
 
                 Instance.gameOverUI.SetActive(true); // Show Game Over UI
             }
+
+            // GameObject gameOverMenuObj = GameObject.Find("GameOverMenu"); // Exact name in hierarchy
+            // if (gameOverMenuObj != null)
+            // {
+            //     gameOverMenuObj.GetComponent<gameOverMenu>().showMenu();
+            // }
         }
     }
 
@@ -121,6 +128,12 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
             winUI.SetActive(true);
         }
+
+        // GameObject winMenuObj = GameObject.Find("WinMenu"); // Exact name in hierarchy
+        // if (winMenuObj != null)
+        // {
+        //     winMenuObj.GetComponent<dontDestroy>().showMenu();
+        // }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
